@@ -1,15 +1,19 @@
 $(document).ready(function() {
   var hero;
   var bullet;
+  var moveBullet;
   var moveArray = ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'];
   $(document).on('click', '#startButton', function(e) {
     e.preventDefault();
     $('#startButton').remove();
+    $('body').css('background-image', 'url("img/backgrounds/trees.jpg")');
+    $('body').css('background-size', 'cover');
+    $('body').css('background-repeat', 'no-repeat');     
     hero = new Hero();
     hero.startHero();
     bullet = new Bullet();
     bullet.startBullet();
-    setInterval(function() {
+    moveBullet = setInterval(function() {
       bullet.moveBullet();
       meeting();
     }, 200);
@@ -26,29 +30,15 @@ $(document).ready(function() {
   });
 
   function meeting() {
-    // console.log(parseInt(div1+60));
-    // console.log(parseInt(div2-25));
-    // if(div1 == div2) {
-    //   alert('asdasd');
-    // }
-    let div1 = document.getElementById('hero');
-    let div2 = document.getElementById('bullet');
-    let x1 = div1.offsetLeft;
-    let y1 = div1.offsetTop;
-    let w1 = div1.offsetWidth;
-    let h1 = div1.offsetHeight;
-    let b1 = parseInt(y1 + h1);
-    let r1 = parseInt(x1 + w1);
-    let x2 = div2.offsetLeft;
-    let y2 = div2.offsetTop;
-    let w2 = div2.offsetWidth;
-    let h2 = div2.offsetHeight;
-    let b2 = parseInt(y2 + h2);
-    let r2 = parseInt(x2 + w2);
-    console.log(w1);
-    console.log(w2);
-    if(b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+    let div1 = document.getElementById('hero').getBoundingClientRect();
+    let div2 = document.getElementById('bullet').getBoundingClientRect();
+    let r1 = div1.right;
+    let l2 = div2.left;
+    console.log(r1);
+    console.log(l2);
+    if(r1 > l2) {
       console.log('yes');
+      clearInterval(moveBullet);
     } else{
       return false;
     }
