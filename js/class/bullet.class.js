@@ -13,17 +13,17 @@ class Bullet {
   }
 
   moveBullet() {
-    this.bulletLeftPosition;
-    this.positionX -= 24;
+    this.positionX = this.bulletLeftPosition;
+    this.positionX -= 30;
     document.getElementById('bullet').style.left = this.positionX+'px';
   }
 
   get bulletLeftPosition() {
-    this.positionX = parseInt(document.getElementById('bullet').offsetLeft);
+    return parseInt(document.getElementById('bullet').offsetLeft);
   }
 
   get bulletTopPosition() {
-    this.positionX = parseInt(document.getElementById('bullet').offsetTop);
+    return parseInt(document.getElementById('bullet').offsetTop);
   }
 
   // moveBullet() {

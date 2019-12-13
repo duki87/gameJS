@@ -51,6 +51,14 @@ class Hero {
     this.positionY = parseInt(document.getElementById('hero').offsetTop);
   }
 
+  increaseHealth(val) {
+    this.health += val;
+  }
+
+  decreaseHealth(val) {
+    this.health -= val;
+  }
+
   // moveHero(direction) {
   //   switch(direction) {
   //     case 'ArrowUp':

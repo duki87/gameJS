@@ -1,8 +1,6 @@
 class Sound {
-  constructor(sound, id) {
-    this.sound = sound;
-    this.id = id;
-  }
+  sound;
+  id;
 
   playSound() {
     let element = document.getElementById(this.id);
